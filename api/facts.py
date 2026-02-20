@@ -11,7 +11,7 @@ facts = [
 	"Male anglerfish get absorbed by the female angler fish after mating"
 ]
 
-@app.get("/api/facts")
+@app.get("/api/facts", response_class=str)
 def get_random_fact():
-    return {"fact": random.choice(facts)}
+    return random.choice(facts)
 
