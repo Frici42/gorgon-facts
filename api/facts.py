@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fastapi.responses import PlainTextResponse
+from fastapi.responses import PlainTextResponse, RedirectResponse
 import random
 
 app = FastAPI()
@@ -11,6 +11,10 @@ facts = [
 	"Crows can recognize human faces for years and pass down the knowledge through generations",
 	"Male anglerfish get absorbed by the female angler fish after mating"
 ]
+
+@app.get("/")
+def go_to_snek():
+    return RedirectResponse(url="https://bitememedusa.carrd.co/")
 
 @app.get("/api/facts", response_class=PlainTextResponse)
 def get_random_fact():
