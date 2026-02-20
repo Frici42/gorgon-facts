@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import PlainTextResponse
 import random
 
 app = FastAPI()
@@ -11,7 +12,7 @@ facts = [
 	"Male anglerfish get absorbed by the female angler fish after mating"
 ]
 
-@app.get("/api/facts", response_class=str)
+@app.get("/api/facts", response_class=PlainTextResponse)
 def get_random_fact():
     return random.choice(facts)
 
